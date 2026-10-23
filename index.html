@@ -6,6 +6,8 @@
     <title>KnoForge AI – Die B2B KI-Plattform für Unternehmenswissen</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Supabase Client CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans antialiased selection:bg-blue-600 selection:text-white">
 
@@ -13,7 +15,6 @@
     <header class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             
-            <!-- Logo -->
             <div class="flex items-center space-x-3 cursor-pointer" onclick="showLandingView()">
                 <div class="w-10 h-10 bg-gradient-to-tr from-blue-600 to-indigo-500 rounded-xl flex items-center justify-center font-black text-xl shadow-lg shadow-blue-500/25">
                     K
@@ -23,22 +24,20 @@
                 </span>
             </div>
 
-            <!-- Main Navigation Links -->
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
                 <button onclick="scrollToSection('features')" class="hover:text-blue-400 transition">Funktionen</button>
                 <button onclick="scrollToSection('pricing')" class="hover:text-blue-400 transition">Preise</button>
                 <button onclick="showDashboardView()" class="hover:text-blue-400 transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-gauge-high text-xs text-blue-500"></i> Demo-App
+                    <i class="fa-solid fa-gauge-high text-xs text-blue-500"></i> Firmen-Portal
                 </button>
             </nav>
 
-            <!-- CTA Buttons -->
             <div class="flex items-center space-x-3">
                 <button onclick="showDashboardView()" class="text-slate-300 hover:text-white text-sm font-medium px-3 py-2 transition">
                     Anmelden
                 </button>
-                <button onclick="showDashboardView()" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-xl text-sm font-semibold shadow-lg shadow-blue-600/25 hover:shadow-blue-600/40 transition-all transform hover:-translate-y-0.5">
-                    Kostenlos starten
+                <button onclick="showDashboardView()" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-xl text-sm font-semibold shadow-lg shadow-blue-600/25 transition">
+                    Firma registrieren
                 </button>
             </div>
         </div>
@@ -47,34 +46,30 @@
     <!-- VIEWS CONTAINER -->
     <div class="flex-1 flex flex-col">
 
-        <!-- ========================================================= -->
-        <!-- VIEW 1: LANDING PAGE (STARTSEITE)                         -->
-        <!-- ========================================================= -->
+        <!-- VIEW 1: LANDING PAGE -->
         <div id="landingView" class="flex-1 flex flex-col">
-            
-            <!-- Hero Section -->
             <section class="relative py-20 lg:py-32 overflow-hidden border-b border-slate-800/50">
                 <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-600/15 blur-[120px] rounded-full pointer-events-none"></div>
 
                 <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
                     <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-8">
-                        <i class="fa-solid fa-sparkles"></i> Die B2B KI-Plattform der nächsten Generation
+                        <i class="fa-solid fa-shield-halved"></i> Getrennte Firmen-Silos & Mandantenfähigkeit
                     </span>
                     
                     <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white leading-tight mb-6">
-                        Verwandle Firmenwissen in <br class="hidden sm:inline">
+                        Sichere KI für Ihr Unternehmen auf <br class="hidden sm:inline">
                         <span class="bg-gradient-to-r from-blue-400 via-indigo-300 to-sky-400 bg-clip-text text-transparent">
-                            intelligente Team-Assistenten
+                            Ihrem eigenen Firmen-Server
                         </span>
                     </h1>
                     
                     <p class="text-lg sm:text-xl text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed">
-                        KnoForge AI verbindet Unternehmensdokumente, Support-Prompts und Abteilungen in einem sicheren KI-Netzwerk. Bereitstellung für das gesamte Team in wenigen Minuten.
+                        Laden Sie Papiere, Scans und Handbücher hoch. Nur autorisierte Mitarbeiter Ihrer Firma haben Zugriff auf das geschützte Firmen-Silo.
                     </p>
 
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <button onclick="showDashboardView()" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-xl text-base shadow-xl shadow-blue-600/30 hover:shadow-blue-600/50 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
-                            <span>Live-Demo ausprobieren</span>
+                        <button onclick="showDashboardView()" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-xl text-base shadow-xl shadow-blue-600/30 transition flex items-center justify-center gap-2">
+                            <span>Zum Firmen-Login</span>
                             <i class="fa-solid fa-arrow-right text-xs"></i>
                         </button>
                         <button onclick="scrollToSection('features')" class="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-semibold px-8 py-4 rounded-xl text-base transition">
@@ -84,224 +79,113 @@
                 </div>
             </section>
 
-            <!-- Features Section -->
             <section id="features" class="py-20 border-b border-slate-800/50 bg-slate-900/30">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center max-w-3xl mx-auto mb-16">
-                        <h2 class="text-3xl font-bold text-white mb-4">Entwickelt für skalierende B2B-Teams</h2>
-                        <p class="text-slate-400">Sichere Datenhaltung, nahtlose Mitarbeiterverwaltung und blitzschnelle Antworten.</p>
+                        <h2 class="text-3xl font-bold text-white mb-4">Sicherheit & Datenschutz an erster Stelle</h2>
+                        <p class="text-slate-400">Strikte Mandanten-Trennung durch Supabase RLS.</p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div class="bg-slate-900/80 border border-slate-800 p-8 rounded-2xl">
                             <div class="w-12 h-12 bg-blue-600/10 border border-blue-500/20 text-blue-400 rounded-xl flex items-center justify-center text-xl mb-6">
-                                <i class="fa-solid fa-shield-halved"></i>
+                                <i class="fa-solid fa-server"></i>
                             </div>
-                            <h3 class="text-xl font-bold text-white mb-3">Isolierte Daten-Silos</h3>
-                            <p class="text-slate-400 text-sm leading-relaxed">
-                                Höchste B2B-Sicherheitsstandards. Unternehmensdaten bleiben strikt getrennt und geschützt.
-                            </p>
+                            <h3 class="text-xl font-bold text-white mb-3">Eigene Firmen-Silos</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">Jede Firma arbeitet in einem vollkommen isolierten Datenbank-Bereich.</p>
                         </div>
-
                         <div class="bg-slate-900/80 border border-slate-800 p-8 rounded-2xl">
                             <div class="w-12 h-12 bg-blue-600/10 border border-blue-500/20 text-blue-400 rounded-xl flex items-center justify-center text-xl mb-6">
-                                <i class="fa-solid fa-users-gear"></i>
+                                <i class="fa-solid fa-user-shield"></i>
                             </div>
-                            <h3 class="text-xl font-bold text-white mb-3">Multi-User & Rollen</h3>
-                            <p class="text-slate-400 text-sm leading-relaxed">
-                                Lade Mitarbeiter ein, vergebe Admin- oder Leserechte und verwalte Zugriffe zentral.
-                            </p>
+                            <h3 class="text-xl font-bold text-white mb-3">Rollen & Berechtigungen</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">Chefs verwalten den Zugang, Mitarbeiter nutzen den sicheren Chat.</p>
                         </div>
-
                         <div class="bg-slate-900/80 border border-slate-800 p-8 rounded-2xl">
                             <div class="w-12 h-12 bg-blue-600/10 border border-blue-500/20 text-blue-400 rounded-xl flex items-center justify-center text-xl mb-6">
-                                <i class="fa-solid fa-bolt"></i>
+                                <i class="fa-solid fa-file-pdf"></i>
                             </div>
-                            <h3 class="text-xl font-bold text-white mb-3">High-Speed Inference</h3>
-                            <p class="text-slate-400 text-sm leading-relaxed">
-                                Angetrieben durch optimierte KI-Modelle für maximale Geschwindigkeit und Präzision.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Pricing Section -->
-            <section id="pricing" class="py-20 border-b border-slate-800/50">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center max-w-3xl mx-auto mb-16">
-                        <h2 class="text-3xl font-bold text-white mb-4">Transparente Preise für jedes Team</h2>
-                        <p class="text-slate-400">Wähle den passenden Tarif für dein Unternehmen.</p>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-                        <div class="bg-slate-900/60 border border-slate-800 p-8 rounded-2xl flex flex-col justify-between">
-                            <div>
-                                <h3 class="text-lg font-bold text-white mb-2">Starter</h3>
-                                <div class="text-3xl font-extrabold text-white mb-4">29€ <span class="text-sm font-normal text-slate-400">/ Monat</span></div>
-                                <ul class="space-y-3 text-sm text-slate-400 mb-8">
-                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Bis zu 3 Mitarbeiter</li>
-                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> 1 KI-Assistent</li>
-                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Standard Support</li>
-                                </ul>
-                            </div>
-                            <button onclick="showDashboardView()" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 rounded-xl transition">Tarif wählen</button>
-                        </div>
-
-                        <div class="bg-slate-900 border-2 border-blue-500 p-8 rounded-2xl flex flex-col justify-between relative shadow-2xl shadow-blue-500/10">
-                            <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Beliebt</span>
-                            <div>
-                                <h3 class="text-lg font-bold text-white mb-2">Pro Team</h3>
-                                <div class="text-3xl font-extrabold text-white mb-4">79€ <span class="text-sm font-normal text-slate-400">/ Monat</span></div>
-                                <ul class="space-y-3 text-sm text-slate-300 mb-8">
-                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Bis zu 15 Mitarbeiter</li>
-                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Unbegrenzte KI-Bots</li>
-                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Erweiterte Wissensdatenbank</li>
-                                </ul>
-                            </div>
-                            <button onclick="showDashboardView()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-blue-600/30 transition">Jetzt testen</button>
-                        </div>
-
-                        <div class="bg-slate-900/60 border border-slate-800 p-8 rounded-2xl flex flex-col justify-between">
-                            <div>
-                                <h3 class="text-lg font-bold text-white mb-2">Enterprise</h3>
-                                <div class="text-3xl font-extrabold text-white mb-4">Individuell</div>
-                                <ul class="space-y-3 text-sm text-slate-400 mb-8">
-                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Unbegrenzte Mitarbeiter</li>
-                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Eigene Server-Instanz</li>
-                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Dedicated Manager</li>
-                                </ul>
-                            </div>
-                            <button onclick="showDashboardView()" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 rounded-xl transition">Kontaktieren</button>
+                            <h3 class="text-xl font-bold text-white mb-3">Dokumenten-Scan</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">Papiere und PDFs hochladen und von der KI präzise auslesen lassen.</p>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
 
-        <!-- ========================================================= -->
-        <!-- VIEW 2: DASHBOARD (SCHÖNE BOT-KONFIGURATION & CHAT)       -->
-        <!-- ========================================================= -->
-        <div id="dashboardView" class="hidden flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <!-- VIEW 2: DASHBOARD & AUTH (FIRMEN-PORTAL) -->
+        <div id="dashboardView" class="hidden flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
             
-            <!-- Linke Spalte: Premium Admin & Dokumenten-Verwaltung -->
-            <section class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-2xl backdrop-blur-md">
-                
-                <div class="mb-6 p-3.5 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-center justify-between">
-                    <div class="flex items-center gap-2.5 text-xs text-emerald-400 font-medium">
-                        <i class="fa-solid fa-shield-check text-base"></i>
-                        <span>Isoliertes Firmen-Silo (DSGVO-konform)</span>
-                    </div>
-                    <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-mono uppercase">Verschlüsselt</span>
+            <!-- Auth Box (Login / Register) -->
+            <div id="authContainer" class="max-w-md mx-auto bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-2xl">
+                <div class="text-center mb-6">
+                    <h2 class="text-xl font-bold text-white">Firmen-Portal Login</h2>
+                    <p class="text-xs text-slate-400 mt-1">Melden Sie sich an, um auf Ihr Firmen-Silo zuzugreifen.</p>
                 </div>
 
-                <div class="flex justify-between items-center mb-6 pb-4 border-b border-slate-800">
+                <form id="authForm" class="space-y-4">
                     <div>
-                        <h2 class="text-lg font-bold flex items-center gap-2 text-white">
-                            <i class="fa-solid fa-sliders text-blue-500"></i> Wissens- & Bot-Zentrale
-                        </h2>
-                        <p class="text-xs text-slate-400 mt-0.5">Konfiguriere deinen Firmen-Assistenten und lade Dokumente hoch.</p>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">E-Mail-Adresse</label>
+                        <input type="email" id="authEmail" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500">
                     </div>
-                    <button onclick="showLandingView()" class="text-xs text-slate-400 hover:text-white transition bg-slate-800 px-2.5 py-1.5 rounded-lg border border-slate-700">
-                        <i class="fa-solid fa-xmark"></i> Zurück
-                    </button>
-                </div>
-
-                <div class="space-y-5">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-300 mb-1.5">Bot Name</label>
-                            <input type="text" id="botName" value="KnoForge Bot" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-blue-500 transition">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-300 mb-1.5">Rolle / Abteilung</label>
-                            <input type="text" id="botRole" value="Kundenservice & Support" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-blue-500 transition">
-                        </div>
-                    </div>
-
-                    <!-- Drag & Drop Upload Bereich -->
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1.5 flex items-center justify-between">
-                            <span><i class="fa-solid fa-file-pdf text-red-400 mr-1"></i> Dokumente & Papiere hochladen</span>
-                            <span class="text-[11px] text-slate-400 font-normal">PDF, DOCX, TXT, Scans</span>
-                        </label>
-                        
-                        <div id="dropZone" class="border-2 border-dashed border-slate-700 hover:border-blue-500 bg-slate-950/60 rounded-2xl p-5 text-center cursor-pointer transition-all duration-200 group">
-                            <input type="file" id="fileInput" class="hidden" multiple accept=".pdf,.docx,.txt,.png,.jpg">
-                            <div class="w-10 h-10 bg-blue-600/10 border border-blue-500/20 text-blue-400 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform">
-                                <i class="fa-solid fa-cloud-arrow-up text-lg"></i>
-                            </div>
-                            <p class="text-xs font-medium text-slate-200 mb-1">
-                                Drag & Drop oder <span class="text-blue-400 underline">Datei auswählen</span>
-                            </p>
-                            <p class="text-[11px] text-slate-500">
-                                Scans, Betriebsanleitungen oder Verträge hochladen
-                            </p>
-                        </div>
-
-                        <div id="fileList" class="mt-3 space-y-2">
-                            <div class="flex items-center justify-between bg-slate-950 border border-slate-800 px-3 py-2 rounded-xl text-xs">
-                                <div class="flex items-center gap-2 text-slate-300 truncate">
-                                    <i class="fa-solid fa-file-pdf text-red-400 text-sm"></i>
-                                    <span class="truncate">Firmen_Handbuch_2026.pdf</span>
-                                </div>
-                                <span class="text-[10px] bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2 py-0.5 rounded-full">Aktiv</span>
-                            </div>
-                        </div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Passwort</label>
+                        <input type="password" id="authPassword" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500">
                     </div>
-
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1.5">Ergänzendes Firmenwissen</label>
-                        <textarea id="companyContext" rows="3" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-blue-500 transition">Unsere Öffnungszeiten sind Mo-Fr von 9 bis 18 Uhr. Support erfolgt via support@knoforge.ai.</textarea>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1.5">System Prompt / Verhaltensregel</label>
-                        <textarea id="systemPrompt" rows="2" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-blue-500 transition">Du bist ein hilfreicher Kundenservice-Assistent.</textarea>
-                    </div>
-
-                    <button onclick="alert('Code-Schnipsel für KnoForge AI generiert!')" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-xl text-sm shadow-lg shadow-blue-600/25 transition flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-code"></i>
-                        <span>Code-Schnipsel generieren</span>
-                    </button>
-                </div>
-            </section>
-
-            <!-- Rechte Spalte: Live Preview Chat -->
-            <section class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-2xl backdrop-blur-md flex flex-col h-[600px]">
-                <div class="flex justify-between items-center mb-4 pb-3 border-b border-slate-800">
-                    <div>
-                        <h2 class="text-sm font-bold flex items-center gap-2 text-white">
-                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                            <span id="chatTitle">KnoForge Bot</span>
-                        </h2>
-                        <span class="text-[11px] text-slate-400">Live Vorschau</span>
-                    </div>
-                    <span class="text-xs bg-slate-800 text-slate-400 px-2.5 py-1 rounded-lg border border-slate-700 font-mono">Testumgebung</span>
-                </div>
-
-                <!-- Messages Area -->
-                <div id="chatMessages" class="flex-1 overflow-y-auto space-y-3.5 pr-2 mb-4 text-sm scrollbar-thin">
-                    <div class="flex items-start gap-2.5">
-                        <div class="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-xs text-white shrink-0">
-                            AI
-                        </div>
-                        <div class="bg-slate-800/80 border border-slate-700/50 p-3.5 rounded-2xl text-slate-200 max-w-[85%] leading-relaxed shadow-sm">
-                            Hallo! Wie kann ich dir heute weiterhelfen?
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Input Bar -->
-                <form id="chatForm" class="flex gap-2">
-                    <input type="text" id="userInput" placeholder="Frage stellen..." class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition">
-                    <button type="submit" class="bg-blue-600 hover:bg-blue-500 px-5 py-3 rounded-xl text-sm font-semibold transition flex items-center justify-center gap-1.5 shadow-md shadow-blue-600/20">
-                        <i class="fa-solid fa-paper-plane"></i>
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-xl text-sm transition shadow-lg shadow-blue-600/20">
+                        Anmelden
                     </button>
                 </form>
-            </section>
-        </div>
+                <div id="authMsg" class="mt-4 text-xs text-center text-red-400"></div>
+            </div>
 
+            <!-- Admin & Chat Workspace (Wird nach Login sichtbar) -->
+            <div id="workspaceContainer" class="hidden grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                <section class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-2xl">
+                    <div class="flex justify-between items-center mb-6 pb-4 border-b border-slate-800">
+                        <div>
+                            <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                                <i class="fa-solid fa-building text-blue-500"></i> <span id="orgNameDisplay">Firmen-Silo</span>
+                            </h2>
+                            <p class="text-xs text-slate-400">Dokumentenverwaltung & Admin-Bereich</p>
+                        </div>
+                        <button id="btnLogout" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700 transition">
+                            Abmelden
+                        </button>
+                    </div>
+
+                    <div class="space-y-5">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1.5"><i class="fa-solid fa-file-pdf text-red-400"></i> Firmendokument hochladen</label>
+                            <input type="file" id="fileInput" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-500">
+                        </div>
+                        <button id="btnUpload" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-2.5 rounded-xl text-xs transition">
+                            Dokument in Firmen-Silo speichern
+                        </button>
+                    </div>
+                </section>
+
+                <section class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-2xl flex flex-col h-[550px]">
+                    <div class="flex justify-between items-center mb-4 pb-3 border-b border-slate-800">
+                        <h2 class="text-sm font-bold text-white flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span> Firmen-Assistent
+                        </h2>
+                    </div>
+                    <div id="chatMessages" class="flex-1 overflow-y-auto space-y-3 pr-2 mb-4 text-sm">
+                        <div class="bg-slate-800/80 p-3 rounded-xl text-slate-200">
+                            Hallo! Ich bin mit Ihrem geschützten Firmen-Silo verbunden. Stellen Sie Ihre Frage zu den Dokumenten.
+                        </div>
+                    </div>
+                    <form id="chatForm" class="flex gap-2">
+                        <input type="text" id="userInput" placeholder="Frage stellen..." class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-500 px-4 py-2.5 rounded-xl text-sm text-white">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </section>
+            </div>
+
+        </div>
     </div>
 
     <!-- Footer -->
@@ -309,18 +193,22 @@
         &copy; 2026 KnoForge AI. Alle Rechte vorbehalten.
     </footer>
 
-    <!-- Global JavaScript -->
+    <!-- Supabase Integration Script -->
     <script>
+        // Deine vorgefertigten Supabase Zugangsdaten:
+        const SUPABASE_URL = 'https://nopeadbixktvpibhnusx.supabase.co'; 
+        const SUPABASE_ANON_KEY = 'sb_publishable_42101628mo1sQcfl1L20BCA_wMYj';
+
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
         function showLandingView() {
             document.getElementById('dashboardView').classList.add('hidden');
             document.getElementById('landingView').classList.remove('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function showDashboardView() {
             document.getElementById('landingView').classList.add('hidden');
             document.getElementById('dashboardView').classList.remove('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function scrollToSection(id) {
@@ -331,123 +219,36 @@
             }, 50);
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            // Drag and Drop Logik
-            const dropZone = document.getElementById('dropZone');
-            const fileInput = document.getElementById('fileInput');
-            const fileList = document.getElementById('fileList');
+        // Auth Login Logik
+        document.getElementById('authForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('authEmail').value;
+            const password = document.getElementById('authPassword').value;
+            const msg = document.getElementById('authMsg');
 
-            if (dropZone && fileInput) {
-                dropZone.addEventListener('click', () => fileInput.click());
-
-                dropZone.addEventListener('dragover', (e) => {
-                    e.preventDefault();
-                    dropZone.classList.add('border-blue-500', 'bg-blue-500/5');
-                });
-
-                dropZone.addEventListener('dragleave', () => {
-                    dropZone.classList.remove('border-blue-500', 'bg-blue-500/5');
-                });
-
-                dropZone.addEventListener('drop', (e) => {
-                    e.preventDefault();
-                    dropZone.classList.remove('border-blue-500', 'bg-blue-500/5');
-                    if (e.dataTransfer.files.length > 0) {
-                        handleFiles(e.dataTransfer.files);
-                    }
-                });
-
-                fileInput.addEventListener('change', (e) => {
-                    if (e.target.files.length > 0) {
-                        handleFiles(e.target.files);
-                    }
-                });
-            }
-
-            function handleFiles(files) {
-                Array.from(files).forEach(file => {
-                    const fileRow = document.createElement('div');
-                    fileRow.className = 'flex items-center justify-between bg-slate-950 border border-slate-800 px-3 py-2 rounded-xl text-xs';
-                    fileRow.innerHTML = `
-                        <div class="flex items-center gap-2 text-slate-300 truncate">
-                            <i class="fa-solid fa-file-check text-emerald-400 text-sm"></i>
-                            <span class="truncate">${escapeHtml(file.name)}</span>
-                        </div>
-                        <span class="text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded-full font-mono">Indexiert</span>
-                    `;
-                    fileList.appendChild(fileRow);
-                });
-            }
-
-            // Chat Logik
-            const chatForm = document.getElementById('chatForm');
-            const userInput = document.getElementById('userInput');
-            const chatMessages = document.getElementById('chatMessages');
-            const botNameInput = document.getElementById('botName');
-            const chatTitle = document.getElementById('chatTitle');
-
-            if (botNameInput && chatTitle) {
-                botNameInput.addEventListener('input', (e) => {
-                    chatTitle.textContent = e.target.value || 'KnoForge Bot';
-                });
-            }
-
-            if (chatForm) {
-                chatForm.addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    const message = userInput.value.trim();
-                    if (!message) return;
-
-                    appendMessage('Du', message, 'user');
-                    userInput.value = '';
-
-                    const systemPrompt = document.getElementById('systemPrompt').value;
-                    const companyContext = document.getElementById('companyContext').value;
-
-                    try {
-                        const response = await fetch('/api/chat', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                message: message,
-                                systemPrompt: systemPrompt,
-                                context: companyContext
-                            })
-                        });
-
-                        const data = await response.json();
-
-                        if (response.ok) {
-                            appendMessage('AI', data.reply, 'ai');
-                        } else {
-                            appendMessage('Fehler', data.error || 'Antwort konnte nicht geladen werden.', 'error');
-                        }
-                    } catch (err) {
-                        appendMessage('Fehler', 'Verbindung zur API fehlgeschlagen.', 'error');
-                    }
-                });
-            }
-
-            function appendMessage(sender, text, type) {
-                const wrapper = document.createElement('div');
-                wrapper.className = `flex items-start gap-2.5 ${type === 'user' ? 'justify-end' : ''}`;
-
-                if (type === 'user') {
-                    wrapper.innerHTML = `<div class="bg-blue-600 p-3.5 rounded-2xl text-white max-w-[85%] leading-relaxed shadow-sm">${escapeHtml(text)}</div>`;
-                } else if (type === 'error') {
-                    wrapper.innerHTML = `<div class="w-7 h-7 rounded-lg bg-red-600 flex items-center justify-center font-bold text-xs text-white shrink-0">!</div><div class="bg-red-900/40 border border-red-700/50 p-3.5 rounded-2xl text-red-200 max-w-[85%] leading-relaxed">${escapeHtml(text)}</div>`;
-                } else {
-                    wrapper.innerHTML = `<div class="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-xs text-white shrink-0">AI</div><div class="bg-slate-800/80 border border-slate-700/50 p-3.5 rounded-2xl text-slate-200 max-w-[85%] leading-relaxed shadow-sm">${escapeHtml(text)}</div>`;
-                }
-
-                chatMessages.appendChild(wrapper);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
-
-            function escapeHtml(text) {
-                return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+            if (error) {
+                msg.textContent = error.message;
+            } else {
+                checkUserSession();
             }
         });
+
+        document.getElementById('btnLogout').addEventListener('click', async () => {
+            await supabaseClient.auth.signOut();
+            document.getElementById('workspaceContainer').classList.add('hidden');
+            document.getElementById('authContainer').classList.remove('hidden');
+        });
+
+        async function checkUserSession() {
+            const { data: { session } } = await supabaseClient.auth.getSession();
+            if (session) {
+                document.getElementById('authContainer').classList.add('hidden');
+                document.getElementById('workspaceContainer').classList.remove('hidden');
+            }
+        }
+
+        checkUserSession();
     </script>
 </body>
 </html>
