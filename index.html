@@ -1,10 +1,234 @@
 <!DOCTYPE html>
-<html>
+<html lang="de" class="dark h-full">
 <head>
-    <title>DocuMind</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whitelabel KI-Plattform</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body>
-    <h1>Willkommen bei DocuMind!</h1>
-    <p>Meine erste Website ist erfolgreich online.</p>
-</body>
-</html>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-full flex flex-col justify-between">
+
+    <!-- Header / Navigation -->
+    <header class="border-b border-slate-800 bg-slate-900/50 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="showSection('landing')">
+                <i data-lucide="bot" class="w-8 h-8 text-blue-500"></i>
+                <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">AI-Platform</span>
+            </div>
+            <div>
+                <button id="nav-btn" onclick="toggleAuth()" class="bg-blue-600 hover:bg-blue-500 text-white font-medium px-4 py-2 rounded-lg text-sm transition">
+                    Kunden-Login
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow">
+
+        <!-- 1. LANDINGPAGE -->
+        <section id="landing-section" class="py-20 px-4 max-w-5xl mx-auto text-center space-y-8">
+            <div class="inline-flex items-center space-x-2 bg-blue-950/60 border border-blue-800/50 text-blue-400 px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+                <i data-lucide="shield-check" class="w-4 h-4"></i>
+                <span>DSGVO-Konform & Enterprise-Ready</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                Ihre Firmen-KI – Sicher. DSGVO-konform. Sofort einsatzbereit.[cite: 5]
+            </h1>
+
+            <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto">
+                Erstellen Sie in wenigen Minuten maßgeschneiderte KI-Assistenten für Ihr Unternehmen. Trainiert mit Ihren Daten, eingebunden auf Ihrer Website.
+            </p>
+
+            <div class="flex justify-center gap-4 pt-4">
+                <button onclick="showSection('login')" class="bg-blue-600 hover:bg-blue-500 text-white text-lg font-semibold px-8 py-3.5 rounded-xl shadow-lg shadow-blue-600/30 transition flex items-center gap-2">
+                    <i data-lucide="rocket" class="w-5 h-5"></i> Jetzt starten
+                </button>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-3 gap-6 text-left mt-16 pt-12 border-t border-slate-800">
+                <div class="p-6 bg-slate-900/60 rounded-xl border border-slate-800">
+                    <i data-lucide="lock" class="w-8 h-8 text-blue-400 mb-4"></i>
+                    <h3 class="text-lg font-semibold text-white mb-2">Datenschutz Garantiert</h3>
+                    <p class="text-slate-400 text-sm">Keine Nutzung Ihrer Geschäftsdaten zum Training öffentlicher Modelle.</p>
+                </div>
+                <div class="p-6 bg-slate-900/60 rounded-xl border border-slate-800">
+                    <i data-lucide="file-text" class="w-8 h-8 text-blue-400 mb-4"></i>
+                    <h3 class="text-lg font-semibold text-white mb-2">PDF & Dokumenten Upload</h3>
+                    <p class="text-slate-400 text-sm">Extrahieren Sie Wissen direkt aus Ihren Firmenunterlagen.[cite: 1, 6]</p>
+                </div>
+                <div class="p-6 bg-slate-900/60 rounded-xl border border-slate-800">
+                    <i data-lucide="code" class="w-8 h-8 text-blue-400 mb-4"></i>
+                    <h3 class="text-lg font-semibold text-white mb-2">Easy Integration</h3>
+                    <p class="text-slate-400 text-sm">Mit nur einem Code-Schnipsel auf jeder Website einbinden.[cite: 2, 4]</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. LOGIN / DEMO-ACCOUNT AREA -->
+        <section id="login-section" class="hidden py-16 px-4 max-w-md mx-auto">
+            <div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl shadow-xl">
+                <div class="text-center mb-6">
+                    <i data-lucide="user-check" class="w-12 h-12 text-blue-500 mx-auto mb-2"></i>
+                    <h2 class="text-2xl font-bold text-white">Kunden-Login</h2>[cite: 5]
+                    <p class="text-sm text-slate-400">Nutzen Sie den Demo-Modus für den Sofortzugriff</p>
+                </div>
+
+                <form onsubmit="handleLogin(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1">E-Mail-Adresse</label>
+                        <input type="email" required value="demo@unternehmen.de" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-slate-100 focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1">Passwort</label>
+                        <input type="password" required value="••••••••" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-slate-100 focus:outline-none focus:border-blue-500">
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-medium py-2.5 rounded-lg transition">
+                        Einloggen (Demo-Account)[cite: 4]
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- 3. DASHBOARD -->
+        <section id="dashboard-section" class="hidden py-10 px-4 max-w-5xl mx-auto space-y-8">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-white">Bot Dashboard</h2>[cite: 4]
+                    <p class="text-sm text-slate-400">Konfigurieren Sie Ihren individuellen KI-Bot</p>
+                </div>
+                <span class="bg-green-500/10 text-green-400 border border-green-500/30 text-xs px-3 py-1 rounded-full flex items-center gap-1">
+                    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span> System Aktiv
+                </span>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Inputs Form -->
+                <div class="space-y-6 bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1">A) Name des Bots</label>[cite: 4]
+                        <input type="text" id="bot-name" placeholder="z. B. Service-Bot Müller GmbH" value="Support-Assistent" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-slate-100 focus:outline-none focus:border-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1">B) System-Prompt (Arbeitsanweisung)</label>[cite: 4]
+                        <textarea id="bot-prompt" rows="3" placeholder="z. B. Du bist ein freundlicher Assistent..." class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-slate-100 focus:outline-none focus:border-blue-500">Du bist der freundliche Kundenservice-Assistent der Firma. Antworte präzise, höflich und verwende ausschließlich das bereitgestellte Firmenwissen.</textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1">C) Firmenwissen (Text / Information)</label>[cite: 4]
+                        <textarea id="bot-knowledge" rows="4" placeholder="Fügen Sie hier Infos zu Öffnungszeiten, Preisen, Leistungen ein..." class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-slate-100 focus:outline-none focus:border-blue-500">Öffnungszeiten: Mo-Fr 08:00 - 17:00 Uhr.
+Kontakt: support@firma.de | Tel: 0123-456789.
+Leistungen: Beratung, Installation, Wartung.</textarea>
+                    </div>
+
+                    <!-- PDF Upload (Kostenlose Extraktion Simuliert) -->
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1">D) Wissen aus Dokument/PDF extrahieren</label>[cite: 1, 6]
+                        <div class="border-2 border-dashed border-slate-700 hover:border-blue-500 p-4 rounded-lg text-center cursor-pointer transition relative bg-slate-800/40">
+                            <input type="file" id="pdf-upload" accept=".pdf,.txt" onchange="handleFileUpload(event)" class="absolute inset-0 opacity-0 cursor-pointer">
+                            <i data-lucide="upload-cloud" class="w-8 h-8 text-slate-400 mx-auto mb-1"></i>
+                            <p class="text-xs text-slate-300 font-medium">Datei auswählen (PDF/TXT)</p>
+                            <p id="file-status" class="text-xs text-blue-400 mt-1"></p>
+                        </div>
+                    </div>
+
+                    <button onclick="generateWidgetCode()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 rounded-lg shadow-lg transition flex items-center justify-center gap-2">
+                        <i data-lucide="code-2" class="w-5 h-5"></i> Bot generieren[cite: 4]
+                    </button>
+                </div>
+
+                <!-- Output Widget Code -->
+                <div class="space-y-4 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">Einbindungs-Code (HTML-Widget)</h3>[cite: 2, 4]
+                        <p class="text-sm text-slate-400 mb-4">Kopieren Sie diesen Schnipsel und fügen Sie ihn in den Body-Bereich Ihrer Firmen-Website ein.</p>[cite: 2, 4]
+
+                        <div class="relative bg-slate-950 border border-slate-800 rounded-xl p-4 font-mono text-xs text-green-400 overflow-x-auto min-h-[220px]">
+                            <pre id="code-output">// Generieren Sie den Code über den Button links...</pre>
+                            <button onclick="copyCode()" class="absolute top-3 right-3 bg-slate-800 hover:bg-slate-700 text-slate-200 p-2 rounded-md transition" title="Code kopieren">
+                                <i data-lucide="copy" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="copy-toast" class="hidden bg-blue-900/50 border border-blue-500/50 text-blue-200 text-xs p-3 rounded-lg text-center">
+                        ✓ Code erfolgreich in die Zwischenablage kopiert!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        <p>© 2026 Whitelabel AI Platform. DSGVO-konform. Gehostet auf Vercel.</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Lucide Icons initialisieren
+        lucide.createIcons();
+
+        let isLoggedIn = false;
+
+        function showSection(section) {
+            document.getElementById('landing-section').classList.add('hidden');
+            document.getElementById('login-section').classList.add('hidden');
+            document.getElementById('dashboard-section').classList.add('hidden');
+
+            if (section === 'landing') {
+                document.getElementById('landing-section').classList.remove('hidden');
+            } else if (section === 'login') {
+                if (isLoggedIn) {
+                    document.getElementById('dashboard-section').classList.remove('hidden');
+                } else {
+                    document.getElementById('login-section').classList.remove('hidden');
+                }
+            } else if (section === 'dashboard') {
+                document.getElementById('dashboard-section').classList.remove('hidden');
+            }
+        }
+
+        function toggleAuth() {
+            if (isLoggedIn) {
+                isLoggedIn = false;
+                document.getElementById('nav-btn').innerText = "Kunden-Login";
+                showSection('landing');
+            } else {
+                showSection('login');
+            }
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            isLoggedIn = true;
+            document.getElementById('nav-btn').innerText = "Abmelden";
+            showSection('dashboard');
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
