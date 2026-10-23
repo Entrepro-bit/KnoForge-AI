@@ -21,7 +21,7 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-      model: 'mixtral-8x7b-32768',
+      model: 'llama-3.2-3b-preview',
         messages: [
           {
             role: 'system',
