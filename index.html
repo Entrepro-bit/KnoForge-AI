@@ -14,7 +14,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             
             <!-- Logo -->
-            <div class="flex items-center space-x-3 cursor-pointer" onclick="showView('landing')">
+            <div class="flex items-center space-x-3 cursor-pointer" id="btnLogo">
                 <div class="w-10 h-10 bg-gradient-to-tr from-blue-600 to-indigo-500 rounded-xl flex items-center justify-center font-black text-xl shadow-lg shadow-blue-500/25">
                     K
                 </div>
@@ -25,19 +25,19 @@
 
             <!-- Main Navigation Links -->
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
-                <button onclick="showView('landing'); scrollToSection('features')" class="hover:text-blue-400 transition">Funktionen</button>
-                <button onclick="showView('landing'); scrollToSection('pricing')" class="hover:text-blue-400 transition">Preise</button>
-                <button onclick="showView('dashboard')" class="hover:text-blue-400 transition flex items-center gap-1.5">
+                <button id="btnNavFeatures" class="hover:text-blue-400 transition">Funktionen</button>
+                <button id="btnNavPricing" class="hover:text-blue-400 transition">Preise</button>
+                <button id="btnNavDemo" class="hover:text-blue-400 transition flex items-center gap-1.5">
                     <i class="fa-solid fa-gauge-high text-xs text-blue-500"></i> Demo-App
                 </button>
             </nav>
 
             <!-- CTA Buttons -->
             <div class="flex items-center space-x-3">
-                <button onclick="showView('dashboard')" class="text-slate-300 hover:text-white text-sm font-medium px-3 py-2 transition">
+                <button id="btnNavLogin" class="text-slate-300 hover:text-white text-sm font-medium px-3 py-2 transition">
                     Anmelden
                 </button>
-                <button onclick="showView('dashboard')" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-xl text-sm font-semibold shadow-lg shadow-blue-600/25 hover:shadow-blue-600/40 transition-all transform hover:-translate-y-0.5">
+                <button id="btnNavStart" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-xl text-sm font-semibold shadow-lg shadow-blue-600/25 hover:shadow-blue-600/40 transition-all transform hover:-translate-y-0.5">
                     Kostenlos starten
                 </button>
             </div>
@@ -47,14 +47,11 @@
     <!-- VIEWS CONTAINER -->
     <div class="flex-1 flex flex-col">
 
-        <!-- ========================================================= -->
-        <!-- VIEW 1: LANDING PAGE (STARTSEITE)                         -->
-        <!-- ========================================================= -->
+        <!-- VIEW 1: LANDING PAGE -->
         <div id="landingView" class="flex-1 flex flex-col">
             
             <!-- Hero Section -->
             <section class="relative py-20 lg:py-32 overflow-hidden border-b border-slate-800/50">
-                <!-- Background Glow Effect -->
                 <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-600/15 blur-[120px] rounded-full pointer-events-none"></div>
 
                 <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
@@ -74,11 +71,11 @@
                     </p>
 
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <button onclick="showView('dashboard')" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-xl text-base shadow-xl shadow-blue-600/30 hover:shadow-blue-600/50 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                        <button id="btnHeroDemo" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-xl text-base shadow-xl shadow-blue-600/30 hover:shadow-blue-600/50 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
                             <span>Live-Demo ausprobieren</span>
                             <i class="fa-solid fa-arrow-right text-xs"></i>
                         </button>
-                        <button onclick="scrollToSection('features')" class="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-semibold px-8 py-4 rounded-xl text-base transition">
+                        <button id="btnHeroMore" class="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-semibold px-8 py-4 rounded-xl text-base transition">
                             Mehr erfahren
                         </button>
                     </div>
@@ -94,7 +91,6 @@
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <!-- Feature 1 -->
                         <div class="bg-slate-900/80 border border-slate-800 p-8 rounded-2xl">
                             <div class="w-12 h-12 bg-blue-600/10 border border-blue-500/20 text-blue-400 rounded-xl flex items-center justify-center text-xl mb-6">
                                 <i class="fa-solid fa-shield-halved"></i>
@@ -105,7 +101,6 @@
                             </p>
                         </div>
 
-                        <!-- Feature 2 -->
                         <div class="bg-slate-900/80 border border-slate-800 p-8 rounded-2xl">
                             <div class="w-12 h-12 bg-blue-600/10 border border-blue-500/20 text-blue-400 rounded-xl flex items-center justify-center text-xl mb-6">
                                 <i class="fa-solid fa-users-gear"></i>
@@ -116,7 +111,6 @@
                             </p>
                         </div>
 
-                        <!-- Feature 3 -->
                         <div class="bg-slate-900/80 border border-slate-800 p-8 rounded-2xl">
                             <div class="w-12 h-12 bg-blue-600/10 border border-blue-500/20 text-blue-400 rounded-xl flex items-center justify-center text-xl mb-6">
                                 <i class="fa-solid fa-bolt"></i>
@@ -139,7 +133,6 @@
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-                        <!-- Starter Plan -->
                         <div class="bg-slate-900/60 border border-slate-800 p-8 rounded-2xl flex flex-col justify-between">
                             <div>
                                 <h3 class="text-lg font-bold text-white mb-2">Starter</h3>
@@ -150,10 +143,9 @@
                                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Standard Support</li>
                                 </ul>
                             </div>
-                            <button onclick="showView('dashboard')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 rounded-xl transition">Tarif wählen</button>
+                            <button class="btnPlanChoose w-full bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 rounded-xl transition">Tarif wählen</button>
                         </div>
 
-                        <!-- Pro Plan (Featured) -->
                         <div class="bg-slate-900 border-2 border-blue-500 p-8 rounded-2xl flex flex-col justify-between relative shadow-2xl shadow-blue-500/10">
                             <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Beliebt</span>
                             <div>
@@ -165,4 +157,206 @@
                                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Erweiterte Wissensdatenbank</li>
                                 </ul>
                             </div>
-                            <button onclick="showView('dashboard')" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded
+                            <button class="btnPlanChoose w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-blue-600/30 transition">Jetzt testen</button>
+                        </div>
+
+                        <div class="bg-slate-900/60 border border-slate-800 p-8 rounded-2xl flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-2">Enterprise</h3>
+                                <div class="text-3xl font-extrabold text-white mb-4">Individuell</div>
+                                <ul class="space-y-3 text-sm text-slate-400 mb-8">
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Unbegrenzte Mitarbeiter</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Eigene Server-Instanz</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Dedicated Manager</li>
+                                </ul>
+                            </div>
+                            <button class="btnPlanChoose w-full bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 rounded-xl transition">Kontaktieren</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- VIEW 2: DASHBOARD -->
+        <div id="dashboardView" class="hidden flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            
+            <section class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-xl backdrop-blur-sm">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-lg font-semibold flex items-center gap-2 text-slate-100">
+                        <i class="fa-solid fa-gear text-blue-400"></i> Bot Konfiguration
+                    </h2>
+                    <button id="btnCloseDashboard" class="text-xs text-slate-400 hover:text-white transition">
+                        <i class="fa-solid fa-xmark"></i> Zurück zur Startseite
+                    </button>
+                </div>
+
+                <div class="space-y-5">
+                    <div>
+                        <label class="block text-xs font-medium text-slate-400 mb-1">Bot Name</label>
+                        <input type="text" id="botName" value="KnoForge Bot" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium text-slate-400 mb-1">System Prompt / Anweisung</label>
+                        <textarea id="systemPrompt" rows="3" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-blue-500 transition">Du bist ein hilfreicher Kundenservice-Assistent.</textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium text-slate-400 mb-1">Firmenwissen / Kontext</label>
+                        <textarea id="companyContext" rows="4" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-blue-500 transition">Unsere Öffnungszeiten sind Mo-Fr von 9 bis 18 Uhr. Support erfolgt via support@knoforge.ai.</textarea>
+                    </div>
+
+                    <button id="btnGenerateSnippet" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 rounded-xl text-sm shadow-lg shadow-blue-600/25 transition">
+                        Code-Schnipsel generieren
+                    </button>
+                </div>
+            </section>
+
+            <section class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-xl backdrop-blur-sm flex flex-col h-[520px]">
+                <div class="flex justify-between items-center mb-4 pb-3 border-b border-slate-800">
+                    <h2 class="text-sm font-semibold flex items-center gap-2 text-slate-200">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span id="chatTitle">KnoForge Bot</span> (Vorschau)
+                    </h2>
+                    <span class="text-xs text-slate-500 font-mono">Live Testumgebung</span>
+                </div>
+
+                <div id="chatMessages" class="flex-1 overflow-y-auto space-y-3 pr-2 mb-4 text-sm scrollbar-thin">
+                    <div class="flex items-start gap-2">
+                        <span class="bg-blue-600 text-xs px-2 py-1 rounded font-bold">AI</span>
+                        <div class="bg-slate-800 p-3 rounded-xl text-slate-200 max-w-[80%]">
+                            Hallo! Wie kann ich dir heute weiterhelfen?
+                        </div>
+                    </div>
+                </div>
+
+                <form id="chatForm" class="flex gap-2">
+                    <input type="text" id="userInput" placeholder="Frage stellen..." class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition">
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-500 px-4 py-2.5 rounded-xl text-sm transition flex items-center justify-center">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </section>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800/80 bg-slate-950 text-center py-6 text-xs text-slate-500">
+        &copy; 2026 KnoForge AI. Alle Rechte vorbehalten.
+    </footer>
+
+    <!-- JS Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const landingView = document.getElementById('landingView');
+            const dashboardView = document.getElementById('dashboardView');
+
+            function showLanding() {
+                dashboardView.classList.add('hidden');
+                landingView.classList.remove('hidden');
+            }
+
+            function showDashboard() {
+                landingView.classList.add('hidden');
+                dashboardView.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            function scrollToSection(id) {
+                showLanding();
+                setTimeout(() => {
+                    const el = document.getElementById(id);
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }, 50);
+            }
+
+            // Event Listener verknüpfen
+            document.getElementById('btnLogo').addEventListener('click', showLanding);
+            document.getElementById('btnNavFeatures').addEventListener('click', () => scrollToSection('features'));
+            document.getElementById('btnNavPricing').addEventListener('click', () => scrollToSection('pricing'));
+            document.getElementById('btnNavDemo').addEventListener('click', showDashboard);
+            document.getElementById('btnNavLogin').addEventListener('click', showDashboard);
+            document.getElementById('btnNavStart').addEventListener('click', showDashboard);
+            
+            document.getElementById('btnHeroDemo').addEventListener('click', showDashboard);
+            document.getElementById('btnHeroMore').addEventListener('click', () => scrollToSection('features'));
+
+            document.querySelectorAll('.btnPlanChoose').forEach(btn => {
+                btn.addEventListener('click', showDashboard);
+            });
+
+            document.getElementById('btnCloseDashboard').addEventListener('click', showLanding);
+
+            // Chat & Bot Konfiguration Logik
+            const chatForm = document.getElementById('chatForm');
+            const userInput = document.getElementById('userInput');
+            const chatMessages = document.getElementById('chatMessages');
+            const botNameInput = document.getElementById('botName');
+            const chatTitle = document.getElementById('chatTitle');
+
+            botNameInput.addEventListener('input', (e) => {
+                chatTitle.textContent = e.target.value || 'KnoForge Bot';
+            });
+
+            chatForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const message = userInput.value.trim();
+                if (!message) return;
+
+                appendMessage('Du', message, 'user');
+                userInput.value = '';
+
+                const systemPrompt = document.getElementById('systemPrompt').value;
+                const companyContext = document.getElementById('companyContext').value;
+
+                try {
+                    const response = await fetch('/api/chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            message: message,
+                            systemPrompt: systemPrompt,
+                            context: companyContext
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        appendMessage('AI', data.reply, 'ai');
+                    } else {
+                        appendMessage('Fehler', data.error || 'Antwort konnte nicht geladen werden.', 'error');
+                    }
+                } catch (err) {
+                    appendMessage('Fehler', 'Verbindung zur API fehlgeschlagen.', 'error');
+                }
+            });
+
+            function appendMessage(sender, text, type) {
+                const wrapper = document.createElement('div');
+                wrapper.className = `flex items-start gap-2 ${type === 'user' ? 'justify-end' : ''}`;
+
+                if (type === 'user') {
+                    wrapper.innerHTML = `<div class="bg-blue-600 p-3 rounded-xl text-white max-w-[80%]">${escapeHtml(text)}</div>`;
+                } else if (type === 'error') {
+                    wrapper.innerHTML = `<span class="bg-red-600 text-xs px-2 py-1 rounded font-bold">!</span><div class="bg-red-900/40 border border-red-700 p-3 rounded-xl text-red-200 max-w-[80%]">${escapeHtml(text)}</div>`;
+                } else {
+                    wrapper.innerHTML = `<span class="bg-blue-600 text-xs px-2 py-1 rounded font-bold">AI</span><div class="bg-slate-800 p-3 rounded-xl text-slate-200 max-w-[80%]">${escapeHtml(text)}</div>`;
+                }
+
+                chatMessages.appendChild(wrapper);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function escapeHtml(text) {
+                return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            }
+
+            document.getElementById('btnGenerateSnippet').addEventListener('click', () => {
+                alert("Code-Schnipsel für KnoForge AI generiert!");
+            });
+        });
+    </script>
+</body>
+</html>
