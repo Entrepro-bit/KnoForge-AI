@@ -1,168 +1,168 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KnoForge AI – Whitelabel KI-Plattform</title>
+    <title>KnoForge AI – Die B2B KI-Plattform für Unternehmenswissen</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
-<body class="bg-slate-900 text-white min-h-screen flex flex-col justify-between">
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans antialiased selection:bg-blue-600 selection:text-white">
 
-    <!-- Header / Navbar -->
-    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-xl shadow-lg shadow-blue-500/30">
-                    <i class="fa-solid font-bold">K</i>
+    <!-- Header / Navigation Bar -->
+    <header class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            
+            <!-- Logo -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="showView('landing')">
+                <div class="w-10 h-10 bg-gradient-to-tr from-blue-600 to-indigo-500 rounded-xl flex items-center justify-center font-black text-xl shadow-lg shadow-blue-500/25">
+                    K
                 </div>
-                <span class="text-xl font-bold tracking-wide">KnoForge AI</span>
+                <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+                    KnoForge AI
+                </span>
             </div>
-            <div class="space-x-4">
-                <button class="text-slate-300 hover:text-white text-sm font-medium transition">Anmelden</button>
-                <button class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-md shadow-blue-500/20 transition">Kostenlos starten</button>
+
+            <!-- Main Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                <button onclick="showView('landing'); scrollToSection('features')" class="hover:text-blue-400 transition">Funktionen</button>
+                <button onclick="showView('landing'); scrollToSection('pricing')" class="hover:text-blue-400 transition">Preise</button>
+                <button onclick="showView('dashboard')" class="hover:text-blue-400 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-gauge-high text-xs text-blue-500"></i> Demo-App
+                </button>
+            </nav>
+
+            <!-- CTA Buttons -->
+            <div class="flex items-center space-x-3">
+                <button onclick="showView('dashboard')" class="text-slate-300 hover:text-white text-sm font-medium px-3 py-2 transition">
+                    Anmelden
+                </button>
+                <button onclick="showView('dashboard')" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-xl text-sm font-semibold shadow-lg shadow-blue-600/25 hover:shadow-blue-600/40 transition-all transform hover:-translate-y-0.5">
+                    Kostenlos starten
+                </button>
             </div>
         </div>
     </header>
 
-    <!-- Main Content Grid -->
-    <main class="max-w-7xl mx-auto px-4 py-8 flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-        
-        <!-- Linke Spalte: Bot Konfiguration -->
-        <section class="bg-slate-800/50 border border-slate-700/60 rounded-2xl p-6 shadow-xl backdrop-blur-sm">
-            <h2 class="text-lg font-semibold flex items-center gap-2 mb-6 text-slate-200">
-                <i class="fa-solid fa-gear text-blue-400"></i> Bot Konfiguration
-            </h2>
+    <!-- VIEWS CONTAINER -->
+    <div class="flex-1 flex flex-col">
 
-            <div class="space-y-5">
-                <div>
-                    <label class="block text-xs font-medium text-slate-400 mb-1">Bot Name</label>
-                    <input type="text" id="botName" value="KnoForge Bot" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500 transition">
-                </div>
+        <!-- ========================================================= -->
+        <!-- VIEW 1: LANDING PAGE (STARTSEITE)                         -->
+        <!-- ========================================================= -->
+        <div id="landingView" class="flex-1 flex flex-col">
+            
+            <!-- Hero Section -->
+            <section class="relative py-20 lg:py-32 overflow-hidden border-b border-slate-800/50">
+                <!-- Background Glow Effect -->
+                <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-600/15 blur-[120px] rounded-full pointer-events-none"></div>
 
-                <div>
-                    <label class="block text-xs font-medium text-slate-400 mb-1">System Prompt / Anweisung</label>
-                    <textarea id="systemPrompt" rows="3" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-sm focus:outline-none focus:border-blue-500 transition">Du bist ein hilfreicher Kundenservice-Assistent.</textarea>
-                </div>
+                <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-8">
+                        <i class="fa-solid fa-sparkles"></i> Die B2B KI-Plattform der nächsten Generation
+                    </span>
+                    
+                    <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white leading-tight mb-6">
+                        Verwandle Firmenwissen in <br class="hidden sm:inline">
+                        <span class="bg-gradient-to-r from-blue-400 via-indigo-300 to-sky-400 bg-clip-text text-transparent">
+                            intelligente Team-Assistenten
+                        </span>
+                    </h1>
+                    
+                    <p class="text-lg sm:text-xl text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed">
+                        KnoForge AI verbindet Unternehmensdokumente, Support-Prompts und Abteilungen in einem sicheren KI-Netzwerk. Bereitstellung für das gesamte Team in wenigen Minuten.
+                    </p>
 
-                <div>
-                    <label class="block text-xs font-medium text-slate-400 mb-1">Firmenwissen / Kontext</label>
-                    <textarea id="companyContext" rows="4" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-sm focus:outline-none focus:border-blue-500 transition">Unsere Öffnungszeiten sind Mo-Fr von 9 bis 18 Uhr. Support erfolgt via support@knoforge.ai.</textarea>
-                </div>
-
-                <button onclick="generateSnippet()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-medium py-2.5 rounded-lg text-sm shadow-lg shadow-blue-600/30 transition">
-                    Code-Schnipsel generieren
-                </button>
-            </div>
-        </section>
-
-        <!-- Rechte Spalte: Live Preview Chat -->
-        <section class="bg-slate-800/50 border border-slate-700/60 rounded-2xl p-6 shadow-xl backdrop-blur-sm flex flex-col h-[520px]">
-            <div class="flex justify-between items-center mb-4 pb-3 border-b border-slate-700/50">
-                <h2 class="text-sm font-semibold flex items-center gap-2 text-slate-300">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span id="chatTitle">KnoForge Bot</span> (Vorschau)
-                </h2>
-                <span class="text-xs text-slate-500">Live Testumgebung</span>
-            </div>
-
-            <!-- Messages Area -->
-            <div id="chatMessages" class="flex-1 overflow-y-auto space-y-3 pr-2 mb-4 text-sm scrollbar-thin">
-                <div class="flex items-start gap-2">
-                    <span class="bg-blue-600 text-xs px-2 py-1 rounded font-bold">AI</span>
-                    <div class="bg-slate-700/60 p-3 rounded-lg text-slate-200 max-w-[80%]">
-                        Hallo! Wie kann ich dir heute weiterhelfen?
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <button onclick="showView('dashboard')" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-xl text-base shadow-xl shadow-blue-600/30 hover:shadow-blue-600/50 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                            <span>Live-Demo ausprobieren</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                        <button onclick="scrollToSection('features')" class="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-semibold px-8 py-4 rounded-xl text-base transition">
+                            Mehr erfahren
+                        </button>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- Input Bar -->
-            <form id="chatForm" class="flex gap-2">
-                <input type="text" id="userInput" placeholder="Frage stellen..." class="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-blue-500 transition">
-                <button type="submit" class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-lg text-sm transition flex items-center justify-center">
-                    <i class="fa-solid fa-paper-plane"></i>
-                </button>
-            </form>
-        </section>
+            <!-- Features Section -->
+            <section id="features" class="py-20 border-b border-slate-800/50 bg-slate-900/30">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <h2 class="text-3xl font-bold text-white mb-4">Entwickelt für skalierende B2B-Teams</h2>
+                        <p class="text-slate-400">Sichere Datenhaltung, nahtlose Mitarbeiterverwaltung und blitzschnelle Antworten.</p>
+                    </div>
 
-    </main>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Feature 1 -->
+                        <div class="bg-slate-900/80 border border-slate-800 p-8 rounded-2xl">
+                            <div class="w-12 h-12 bg-blue-600/10 border border-blue-500/20 text-blue-400 rounded-xl flex items-center justify-center text-xl mb-6">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Isolierte Daten-Silos</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Höchste B2B-Sicherheitsstandards. Unternehmensdaten bleiben strikt getrennt und geschützt.
+                            </p>
+                        </div>
 
-    <!-- Footer -->
-    <footer class="border-t border-slate-800 text-center py-4 text-xs text-slate-500">
-        &copy; 2026 KnoForge AI. Alle Rechte vorbehalten.
-    </footer>
+                        <!-- Feature 2 -->
+                        <div class="bg-slate-900/80 border border-slate-800 p-8 rounded-2xl">
+                            <div class="w-12 h-12 bg-blue-600/10 border border-blue-500/20 text-blue-400 rounded-xl flex items-center justify-center text-xl mb-6">
+                                <i class="fa-solid fa-users-gear"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Multi-User & Rollen</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Lade Mitarbeiter ein, vergebe Admin- oder Leserechte und verwalte Zugriffe zentral.
+                            </p>
+                        </div>
 
-    <!-- Chat Logic JavaScript -->
-    <script>
-        const chatForm = document.getElementById('chatForm');
-        const userInput = document.getElementById('userInput');
-        const chatMessages = document.getElementById('chatMessages');
-        const botNameInput = document.getElementById('botName');
-        const chatTitle = document.getElementById('chatTitle');
+                        <!-- Feature 3 -->
+                        <div class="bg-slate-900/80 border border-slate-800 p-8 rounded-2xl">
+                            <div class="w-12 h-12 bg-blue-600/10 border border-blue-500/20 text-blue-400 rounded-xl flex items-center justify-center text-xl mb-6">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">High-Speed Inference</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Angetrieben durch optimierte KI-Modelle für maximale Geschwindigkeit und Präzision.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-        // Dynamischer Bot-Name in der Vorschau
-        botNameInput.addEventListener('input', (e) => {
-            chatTitle.textContent = e.target.value || 'KnoForge Bot';
-        });
+            <!-- Pricing Section -->
+            <section id="pricing" class="py-20 border-b border-slate-800/50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <h2 class="text-3xl font-bold text-white mb-4">Transparente Preise für jedes Team</h2>
+                        <p class="text-slate-400">Wähle den passenden Tarif für dein Unternehmen.</p>
+                    </div>
 
-        chatForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const message = userInput.value.trim();
-            if (!message) return;
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                        <!-- Starter Plan -->
+                        <div class="bg-slate-900/60 border border-slate-800 p-8 rounded-2xl flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-2">Starter</h3>
+                                <div class="text-3xl font-extrabold text-white mb-4">29€ <span class="text-sm font-normal text-slate-400">/ Monat</span></div>
+                                <ul class="space-y-3 text-sm text-slate-400 mb-8">
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Bis zu 3 Mitarbeiter</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> 1 KI-Assistent</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Standard Support</li>
+                                </ul>
+                            </div>
+                            <button onclick="showView('dashboard')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 rounded-xl transition">Tarif wählen</button>
+                        </div>
 
-            // User-Nachricht anzeigen
-            appendMessage('Du', message, 'user');
-            userInput.value = '';
-
-            const systemPrompt = document.getElementById('systemPrompt').value;
-            const companyContext = document.getElementById('companyContext').value;
-
-            try {
-                const response = await fetch('/api/chat', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        message: message,
-                        systemPrompt: systemPrompt,
-                        context: companyContext
-                    })
-                });
-
-                const data = await response.json();
-
-                if (response.ok) {
-                    appendMessage('AI', data.reply, 'ai');
-                } else {
-                    appendMessage('Fehler', data.error || 'Antwort konnte nicht geladen werden.', 'error');
-                }
-            } catch (err) {
-                appendMessage('Fehler', 'Verbindung zur API fehlgeschlagen.', 'error');
-            }
-        });
-
-        function appendMessage(sender, text, type) {
-            const wrapper = document.createElement('div');
-            wrapper.className = `flex items-start gap-2 ${type === 'user' ? 'justify-end' : ''}`;
-
-            if (type === 'user') {
-                wrapper.innerHTML = `<div class="bg-blue-600 p-3 rounded-lg text-white max-w-[80%]">${escapeHtml(text)}</div>`;
-            } else if (type === 'error') {
-                wrapper.innerHTML = `<span class="bg-red-600 text-xs px-2 py-1 rounded font-bold">!</span><div class="bg-red-900/40 border border-red-700 p-3 rounded-lg text-red-200 max-w-[80%]">${escapeHtml(text)}</div>`;
-            } else {
-                wrapper.innerHTML = `<span class="bg-blue-600 text-xs px-2 py-1 rounded font-bold">AI</span><div class="bg-slate-700/60 p-3 rounded-lg text-slate-200 max-w-[80%]">${escapeHtml(text)}</div>`;
-            }
-
-            chatMessages.appendChild(wrapper);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        function escapeHtml(text) {
-            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-        }
-
-        function generateSnippet() {
-            alert("Code-Schnipsel für KnoForge AI generiert!");
-        }
-    </script>
-</body>
-</html>
+                        <!-- Pro Plan (Featured) -->
+                        <div class="bg-slate-900 border-2 border-blue-500 p-8 rounded-2xl flex flex-col justify-between relative shadow-2xl shadow-blue-500/10">
+                            <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Beliebt</span>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-2">Pro Team</h3>
+                                <div class="text-3xl font-extrabold text-white mb-4">79€ <span class="text-sm font-normal text-slate-400">/ Monat</span></div>
+                                <ul class="space-y-3 text-sm text-slate-300 mb-8">
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Bis zu 15 Mitarbeiter</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Unbegrenzte KI-Bots</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Erweiterte Wissensdatenbank</li>
+                                </ul>
+                            </div>
+                            <button onclick="showView('dashboard')" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded
